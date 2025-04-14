@@ -5,7 +5,8 @@
     "serve": "concurrently \"npm run serve-api\" \"npm run start-client\"",
     "serve-api": "nodemon -w ./server --exec \"babel-node server\"",
     "start-client": "cd client && npm start",
-    "postinstall": "cd client && npm install"
+    "postinstall": "cd client && npm install",
+    "build-client": "cd ../client && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
