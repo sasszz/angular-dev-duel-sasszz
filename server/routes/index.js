@@ -5,7 +5,7 @@ import validate from "express-validation";
 import token from "../../token.js";
 
 import validation from "./validation/index.js";
-import userMapper from "../services/userService";
+import userMapper from "../services/userService.js";
 
 export default () => {
   let router = Router();
