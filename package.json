@@ -5,6 +5,7 @@
     "serve": "concurrently \"npm run serve-api\" \"npm run start-client\"",
     "serve-api": "nodemon -w ./server --exec \"babel-node server\"",
     "start-client": "cd client && npm start",
+    "start": "cd server && node index.js",
     "postinstall": "cd client && npm install",
     "build-client": "cd client && npm install && npm run build"
   },
