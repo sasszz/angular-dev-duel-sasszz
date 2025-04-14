@@ -8,9 +8,9 @@ import { fileURLToPath } from "url";
 import expressValidation from "express-validation";
 import httpStatus from "http-status";
 
-import APIError from "./lib/APIError.js";
-import api from "./routes/index.js";
-import config from "./config/index.js";
+import APIError from "./lib/APIError";
+import api from "./routes/index";
+import config from "./config/index";
 
 // Setup paths
 const __filename = fileURLToPath(import.meta.url);
