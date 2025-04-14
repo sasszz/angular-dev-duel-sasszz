@@ -8,10 +8,11 @@ services:
     plan: free
     autoDeploy: true
 
-  - type: static
+  - type: web
     name: dev-duel-client
+    env: node
     rootDir: client
     buildCommand: npm install && npm run build
-    staticPublishPath: dist/client
+    startCommand: npx serve -s dist/client
     plan: free
     autoDeploy: true
