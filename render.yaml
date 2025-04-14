@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: dev-duel-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    autoDeploy: true
+
+  - type: static
+    name: dev-duel-client
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist/client
+    plan: free
+    autoDeploy: true
