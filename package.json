@@ -1,11 +1,12 @@
 {
   "name": "dev-duel",
-  "main": "/server/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "serve": "concurrently \"npm run serve-api\" \"npm run start-client\"",
     "serve-api": "nodemon -w ./server --exec \"babel-node server\"",
     "start-client": "cd client && npm start",
-    "build": "cd client && npm install && npm run build && cd .. && tsc",
+    "build": "cd client && npm install && npm run build && cd .. && npm run build-api",
+    "build-api": "babel server --out-dir dist --extensions \".js\"",
     "start": "node dist/index.js",
     "postinstall": "cd client && npm install",
     "build-client": "cd client && npm install && npm run build"
