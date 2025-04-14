@@ -1,0 +1,34 @@
+<div>
+  <div class="flex flex-row flex-wrap gap-4 items-center">
+    <app-text-input
+      (usernameChange)="receiveUsernameOne($event)"
+    ></app-text-input>
+    <p class="text-white font-bulletproof text-3xl">VS</p>
+    <app-text-input
+      (usernameChange)="receiveUsernameTwo($event)"
+    ></app-text-input>
+    <button
+      class="bg-black rounded border text-red-600 border-white px-4 py-2 font-bulletproof transition-colors duration-150 hover:bg-gray-800 text-3xl disabled:opacity-40 disabled:cursor-not-allowed"
+      (click)="onSubmit()"
+      [disabled]="!usernameOne.trim() || !usernameTwo.trim()"
+    >
+      Duel
+    </button>
+  </div>
+  <div
+    class="relative w-screen lg:w-fit h-auto flex items-center justify-center"
+  >
+    <app-duel-scene
+      [userOneData]="userOneData"
+      [userTwoData]="userTwoData"
+      (duelComplete)="onDuelComplete()"
+    ></app-duel-scene>
+  </div>
+  <div
+    class="flex flex-col lg:flex-row gap-4 pt-8 items-center"
+    *ngIf="duelComplete"
+  >
+    <app-user-card [user]="userOneData" [isUserOne]="true"></app-user-card>
+    <app-user-card [user]="userTwoData" [isUserOne]="false"></app-user-card>
+  </div>
+</div>

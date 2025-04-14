@@ -1,0 +1,76 @@
+<div class="relative w-fit h-auto">
+  <!-- Stage background -->
+  <img class="w-96 opacity-50" src="assets/back.png" alt="Stage" />
+
+  <!-- Overlay text -->
+  <p
+    *ngIf="showFightText"
+    class="absolute inset-0 flex pt-24 justify-center text-red-600 font-bulletproof text-6xl animate-pulse pointer-events-none z-20"
+  >
+    FIGHT!
+  </p>
+
+  <p
+    *ngIf="showWinnerText"
+    class="absolute inset-0 flex pt-24 justify-center text-red-600 font-bulletproof text-6xl pointer-events-none z-20 animate-pulse"
+  >
+    WINNER!
+  </p>
+
+  <div class="absolute inset-0">
+    <!-- BrawlerGirl + Avatar -->
+    <div
+      class="absolute transition-all duration-300"
+      [ngClass]="[
+        brawlerLeftClass,
+        brawlerBottomClass,
+        dueling ? '-translate-x-1/2' : ''
+      ]"
+    >
+      <div class="relative">
+        <img [src]="brawlerGirlGif" alt="Brawler Girl" class="w-48" />
+
+        <img
+          *ngIf="userOneData?.avatar_url"
+          [src]="userOneData.avatar_url"
+          alt="Avatar"
+          class="w-10 h-10 absolute rounded-full -top-4 left-1/2 -translate-x-1/2 z-10 transition-all duration-300"
+          [ngClass]="{
+            'border-2 border-white': !duelComplete,
+            'border-2 border-red-600': duelComplete
+          }"
+        />
+      </div>
+    </div>
+
+    <!-- EnemyPunk + Avatar -->
+    <ng-container *ngIf="enemyState !== 'final'">
+      <div
+        class="absolute bottom-0 transition-all duration-500"
+        [ngClass]="{
+          'right-10': !dueling,
+          'left-1/2': dueling
+        }"
+      >
+        <div class="relative">
+          <img
+            *ngIf="userTwoData?.avatar_url"
+            [src]="userTwoData.avatar_url"
+            alt="Enemy Avatar"
+            class="w-10 h-10 absolute rounded-full border-2 border-white -top-4 left-1/2 -translate-x-1/2 z-10 transition-all duration-300"
+          />
+          <img [src]="enemyPunkGif" alt="Enemy Punk" class="w-48" />
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- KO frame -->
+    <ng-container *ngIf="enemyState === 'final'">
+      <img
+        src="assets/enemyPunk/finalHurt.png"
+        alt="Enemy Punk KO"
+        class="w-48 absolute bottom-0 left-1/2"
+      />
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div
+  *ngIf="user"
+  class="flex flex-row p-4 border border-white gap-4 rounded-lg w-96"
+  [ngClass]="{ 'bg-gray-900': isUserOne }"
+>
+  <div class="flex flex-col gap-2 items-center justify-start">
+    <img
+      [src]="user['avatar_url']"
+      alt="profile"
+      [ngClass]="{
+        'rounded-full w-12 h-12 lg:w-24 lg:h-24': true,
+        'border-2 border-red-600': isUserOne
+      }"
+    />
+    <p *ngIf="isUserOne" class="text-white font-bulletproof">WINNER</p>
+  </div>
+  <div class="text-white">
+    <div *ngFor="let stat of stats" class="flex flex-row gap-4">
+      <p class="text-red-600 font-bulletproof">{{ stat.label }}</p>
+      <p class="line-clamp-1">{{ stat.value }}</p>
+    </div>
+  </div>
+</div>
