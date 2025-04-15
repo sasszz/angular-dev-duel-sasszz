@@ -12,7 +12,7 @@ services:
     name: dev-duel-client
     rootDir: client
     runtime: static
-    buildCommand: ng build
+    buildCommand: npm install && npm run build
     staticPublishPath: dist/dev-duel
     plan: free
     autoDeploy: true
