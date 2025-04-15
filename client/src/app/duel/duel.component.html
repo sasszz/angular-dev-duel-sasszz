@@ -10,10 +10,20 @@
     <button
       class="bg-black rounded border text-red-600 border-white px-4 py-2 font-bulletproof transition-colors duration-150 hover:bg-gray-800 text-3xl disabled:opacity-40 disabled:cursor-not-allowed"
       (click)="onSubmit()"
-      [disabled]="!usernameOne.trim() || !usernameTwo.trim()"
+      [disabled]="!usernameOne.trim() || !usernameTwo.trim() || loading"
     >
-      Duel
+      {{ loading ? "Loading..." : "Duel" }}
     </button>
+  </div>
+
+  <!-- Fullscreen loader overlay -->
+  <div
+    *ngIf="loading"
+    class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+  >
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-t-4 border-yellow-400 border-solid"
+    ></div>
   </div>
   <div
     class="relative w-screen lg:w-fit h-auto flex items-center justify-center"

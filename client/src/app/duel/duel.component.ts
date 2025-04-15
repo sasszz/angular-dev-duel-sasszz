@@ -14,6 +14,7 @@ export class DuelComponent implements OnInit {
   userTwoData: any = null;
 
   duelTriggered = false;
+  loading = false;
 
   constructor(private userService: UserService) {}
 
@@ -28,8 +29,9 @@ export class DuelComponent implements OnInit {
   }
 
   onSubmit() {
-    this.duelComplete = false; 
+    this.duelComplete = false;
     this.duelTriggered = true;
+    this.loading = true;
     console.log(
       'onSubmit clicked with usernames:',
       this.usernameOne,
@@ -49,7 +51,10 @@ export class DuelComponent implements OnInit {
         }
       })
 
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        this.loading = false;
+      });
   }
 
   duelComplete = false;
