@@ -2,10 +2,13 @@ import { Router } from "express";
 import axios from "axios";
 import validate from "express-validation";
 
-import token from "../token";
-
 import validation from "./validation/index";
 import userMapper from "../services/userService";
+
+import dotenv from "dotenv";
+dotenv.config();
+
+const token = process.env.GITHUB_TOKEN;
 
 export default () => {
   let router = Router();
