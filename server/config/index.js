@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 
 const nodeEnvSchema = Joi.object({
   NODE_ENV: Joi.string()
-    .allow(['development', 'production'])
+    .allow('development', 'production')
     .default('development')
 })
 
