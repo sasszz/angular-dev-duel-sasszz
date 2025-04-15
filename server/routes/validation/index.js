@@ -1,7 +1,4 @@
-import users from './users.js'
-import user from './user.js'
+import user from './user.js';
+import users from './users.js';
 
-export default {
-  user,
-  users
-}
+export { user as userSchema, users as usersSchema };

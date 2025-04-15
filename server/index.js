@@ -5,7 +5,6 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-import expressValidation from "express-validation";
 import httpStatus from "http-status";
 
 import APIError from "./lib/APIError.js";
@@ -39,24 +38,18 @@ if (config.env === "production") {
   });
 }
 
-// Convert non-APIError errors
-app.use((err, req, res, next) => {
-  if (err instanceof expressValidation.ValidationError) {
-    const unifiedMessage = err.errors
-      .map((e) => e.messages.join(". "))
-      .join(" and ");
-    const error = new APIError(unifiedMessage, err.status, true);
-    return next(error);
-  } else if (!(err instanceof APIError)) {
-    const apiError = new APIError(err.message, err.status, err.isPublic);
-    return next(apiError);
-  }
-  return next(err);
-});
-
 // Catch 404
 app.use((req, res, next) => {
   const err = new APIError("API not found", httpStatus.NOT_FOUND);
+  return next(err);
+});
+
+// Convert non-APIError errors
+app.use((err, req, res, next) => {
+  if (!(err instanceof APIError)) {
+    const apiError = new APIError(err.message, err.status || 500, err.isPublic);
+    return next(apiError);
+  }
   return next(err);
 });
 

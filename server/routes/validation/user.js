@@ -1,7 +1,11 @@
-import Joi from 'joi'
+import Joi from 'joi';
 
-export default {
-  params: {
-    username: Joi.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9-]*$/).required().min(1).max(39)
-  }
-}
+const userSchema = Joi.object({
+  username: Joi.string()
+    .pattern(/^[a-zA-Z0-9][a-zA-Z0-9-]*$/)
+    .min(1)
+    .max(39)
+    .required()
+});
+
+export default userSchema;
