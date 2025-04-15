@@ -12,6 +12,6 @@ services:
     name: dev-duel-client
     rootDir: client
     runtime: static
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run build -- --configuration production
     staticPublishPath: dist/dev-duel
     autoDeploy: true
