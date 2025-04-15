@@ -20,6 +20,7 @@ export class DuelSceneComponent implements OnChanges {
   dueling = false;
   showFightText = false;
   showWinnerText = false;
+  countdownText: string | null = null;
 
   brawlerGirlGif = 'assets/brawlerGirl/idle.gif';
   enemyPunkGif = 'assets/enemyPunk/idle.gif';
@@ -40,10 +41,23 @@ export class DuelSceneComponent implements OnChanges {
   }
 
   async startDuel() {
-    this.showFightText = true;
-    this.showWinnerText = false;
     this.dueling = true;
     this.enemyState = 'idle';
+    this.brawlerGirlGif = 'assets/brawlerGirl/idle.gif';
+    this.enemyPunkGif = 'assets/enemyPunk/idle.gif';
+    this.brawlerLeftClass = 'left-10';
+    this.brawlerBottomClass = 'bottom-0';
+    this.showFightText = false;
+    this.showWinnerText = false;
+
+    const countdownVals = ['3', '2', '1'];
+    for (const val of countdownVals) {
+      this.countdownText = val;
+      await this.delay(800);
+    }
+
+    this.countdownText = null;
+    this.showFightText = true;
 
     this.brawlerGirlGif = 'assets/brawlerGirl/idle.gif';
     this.enemyPunkGif = 'assets/enemyPunk/idle.gif';

@@ -1,27 +1,58 @@
 <nav class="flex flex-col lg:flex-row lg:items-center lg:gap-12 pb-8">
-  <a routerLink="/">
-    <h1 class="font-bulletproof text-red-600 text-5xl lg:text-9xl">Dev Duel</h1>
-  </a>
+  <!-- Home -->
+  <div
+    class="flex flex-row items-center gap-2"
+    routerLinkActive="dot-visible"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a
+      routerLink="/"
+      class="font-bulletproof text-red-600 text-5xl lg:text-9xl transition-colors"
+    >
+      Dev Duel
+    </a>
+    <span
+      class="dot w-4 h-4 rounded-full bg-yellow-400 aspect-square opacity-0 transition-opacity"
+      aria-hidden="true"
+    ></span>
+  </div>
 
+  <!-- Navigation links -->
   <div class="flex flex-col">
-    <a routerLink="/inspect">
-      <h1
-        class="font-bulletproof text-white text-3xl hover:text-orange-600"
-        routerLinkActive="text-orange-600"
-        [routerLinkActiveOptions]="{ exact: true }"
+    <!-- Inspect -->
+    <div
+      class="flex flex-row items-center gap-2"
+      routerLinkActive="dot-visible !text-yellow-400"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        routerLink="/inspect"
+        class="font-bulletproof text-white text-3xl hover:text-yellow-400 transition-colors"
       >
         Inspect
-      </h1>
-    </a>
+      </a>
+      <span
+        class="dot w-4 h-4 rounded-full bg-yellow-400 aspect-square opacity-0 transition-opacity"
+        aria-hidden="true"
+      ></span>
+    </div>
 
-    <a routerLink="/duel">
-      <h1
-        class="font-bulletproof text-white text-3xl hover:text-orange-600"
-        routerLinkActive="text-orange-600"
-        [routerLinkActiveOptions]="{ exact: true }"
+    <!-- Duel -->
+    <div
+      class="flex flex-row items-center gap-2"
+      routerLinkActive="dot-visible !text-yellow-400"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        routerLink="/duel"
+        class="font-bulletproof text-white text-3xl hover:text-yellow-400 transition-colors"
       >
         Duel
-      </h1>
-    </a>
+      </a>
+      <span
+        class="dot w-4 h-4 rounded-full bg-yellow-400 aspect-square opacity-0 transition-opacity"
+        aria-hidden="true"
+      ></span>
+    </div>
   </div>
 </nav>

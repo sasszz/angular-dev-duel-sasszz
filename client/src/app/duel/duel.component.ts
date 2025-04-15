@@ -28,6 +28,7 @@ export class DuelComponent implements OnInit {
   }
 
   onSubmit() {
+    this.duelComplete = false; 
     this.duelTriggered = true;
     console.log(
       'onSubmit clicked with usernames:',

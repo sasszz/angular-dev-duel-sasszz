@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DuelComponent } from './duel/duel.component';
 import { InspectComponent } from './inspect/inspect.component';
-import { LinkButtonComponent } from './Components/link-button/link-button.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
@@ -20,7 +19,6 @@ import { DuelSceneComponent } from './Components/duel-scene/duel-scene.component
     DuelComponent,
     InspectComponent,
     NavbarComponent,
-    LinkButtonComponent,
     HomeComponent,
     TextInputComponent,
     UserCardComponent,

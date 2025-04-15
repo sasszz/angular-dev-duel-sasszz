@@ -2,7 +2,12 @@
   <!-- Stage background -->
   <img class="w-96 opacity-50" src="assets/back.png" alt="Stage" />
 
-  <!-- Overlay text -->
+  <p
+    *ngIf="countdownText"
+    class="absolute inset-0 flex pt-24 justify-center text-yellow-400 font-bulletproof text-6xl pointer-events-none z-30 animate-pulse"
+  >
+    {{ countdownText }}
+  </p>
   <p
     *ngIf="showFightText"
     class="absolute inset-0 flex pt-24 justify-center text-red-600 font-bulletproof text-6xl animate-pulse pointer-events-none z-20"
