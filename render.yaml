@@ -4,14 +4,15 @@ services:
     env: node
     rootDir: server
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node index.js
     plan: free
     autoDeploy: true
 
   - type: web
     name: dev-duel-client
     rootDir: client
-    buildCommand: npm install && npm run build
+    runtime: static
+    buildCommand: ng build
     staticPublishPath: dist/dev-duel
     plan: free
     autoDeploy: true
