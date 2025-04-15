@@ -1,35 +1,44 @@
-import Joi from 'joi'
+import Joi from "joi";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// import and configure dotenv, will load vars in .env in PROCESS.ENV
-import dotenv from 'dotenv'
+// ESM-safe __dirname workaround
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+// Validate NODE_ENV
 const nodeEnvSchema = Joi.object({
   NODE_ENV: Joi.string()
-    .allow('development', 'production')
-    .default('development')
-})
+    .valid("development", "production")
+    .default("development"),
+});
 
-// define validation for all the env vars
+// Validate all other env vars
 const envVarsSchema = Joi.object({
-  PORT: Joi.number().default(3000)
-})
-  .unknown()
-  .required()
+  PORT: Joi.number().default(3000),
+}).unknown(true);
 
-// Determine environment
-dotenv.config({ path: 'server' })
-let { value: nodeEnv } = Joi.validate(process.env, nodeEnvSchema)
+// Load base env file
+dotenv.config({ path: path.join(__dirname, "../.env") });
 
-// Load specified environment variables
-dotenv.config({ path: `server/.env-${nodeEnv.NODE_ENV}` })
-let { error, value: envVars } = Joi.validate(process.env, envVarsSchema)
-if (error) {
-  throw new Error(`Config validation error: ${error.message}`)
+// Validate NODE_ENV
+const { value: nodeEnv, error: envError } = nodeEnvSchema.validate(process.env);
+if (envError) {
+  throw new Error(`NODE_ENV validation error: ${envError.message}`);
 }
 
-const index = {
+// Load env-specific file
+dotenv.config({ path: path.join(__dirname, `../.env-${nodeEnv.NODE_ENV}`) });
+
+// Validate remaining vars
+const { value: envVars, error: varError } = envVarsSchema.validate(process.env);
+if (varError) {
+  throw new Error(`Config validation error: ${varError.message}`);
+}
+
+// Export config
+export default {
   env: envVars.NODE_ENV,
-  port: envVars.PORT
-}
-
-export default index
+  port: envVars.PORT,
+};
