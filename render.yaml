@@ -14,5 +14,4 @@ services:
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist/dev-duel
-    plan: free
     autoDeploy: true
