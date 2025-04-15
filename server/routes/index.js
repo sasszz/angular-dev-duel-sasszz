@@ -2,8 +2,8 @@ import { Router } from "express";
 import axios from "axios";
 import validate from "express-validation";
 
-import validation from "./validation/index";
-import userMapper from "../services/userService";
+import validation from "./validation/index.js";
+import userMapper from "../services/userService.js";
 
 import dotenv from "dotenv";
 dotenv.config();

@@ -1,5 +1,5 @@
-import users from './users'
-import user from './user'
+import users from './users.js'
+import user from './user.js'
 
 export default {
   user,
