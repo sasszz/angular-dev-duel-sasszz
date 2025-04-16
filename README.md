@@ -4,8 +4,10 @@ Duke it out with your fellow devs!
 
 DevDuel lets you enter two GitHub usernames and watch them face off in a stat-based animated battle.
 
+<p>
   <img src="/client/src/assets/brawlerGirl/idle.gif" width="200" />
-    <img src="/client/src/assets/enemyPunk/idle.gif" width="200" />
+  <img src="/client/src/assets/enemyPunk/idle.gif" width="200" />
+</p>
 
 ---
 
@@ -67,12 +69,24 @@ dev-duel/
 
 ## Features
 
-- Look up a single GitHub user
-- Duel Two GitHub users using custom backend logic
-- Complex frontend animations
-- Custom character animation with user avatars
-- Mobile-optimized, animated, and deployed via [Render](https://render.com)
-- GitHub API token used to avoid rate limits
+<table width="100%">
+  <tr>
+    <td>
+      <ul>
+        <li>Look up a single GitHub user</li>
+        <li>Duel two GitHub users using custom backend logic</li>
+        <li>Complex frontend animations</li>
+        <li>Custom character animation with user avatars</li>
+        <li>Mobile-optimized, animated, and deployed via <a href="https://render.com">Render</a></li>
+        <li>GitHub API token used to avoid rate limits</li>
+      </ul>
+    </td>
+    <td width="240" align="right">
+      <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
+    </td>
+  </tr>
+</table>
+
 
 ---
 
@@ -149,7 +163,7 @@ Used to authenticate GitHub API requests and avoid rate limits.
 
 ## Deployment
 
-<table>
+<table width="100%">
   <tr>
     <td width="220">
       <img src="/client/src/assets/brawlerGirl/kick.gif" width="200" />
@@ -160,13 +174,11 @@ Used to authenticate GitHub API requests and avoid rate limits.
   </tr>
 </table>
 
-
 ---
 
 ## Acknowledgements
 
-<table>
-  <tr>
+<table width="100%">  <tr>
     <td>
       <ul>
         <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
