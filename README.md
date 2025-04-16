@@ -212,30 +212,33 @@ During this project, I was learning Angular for the first time, and getting used
 
 The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
 
-1. **Monorepo Configuration**
+<table>
+  <tr>
+    <th>Issue</th>
+    <th>Resolution</th>
+  </tr>
+  <tr>
+    <td>Client and server were deployed together, causing build and routing conflicts.</td>
+    <td>Split into two Render services — one <code>web</code> for the Node server and one <code>static</code> for the Angular client, using <code>render.yaml</code>.</td>
+  </tr>
+  <tr>
+    <td>Direct navigation to client routes like <code>/inspect</code> resulted in 404 errors.</td>
+    <td>Added a rewrite rule in Render to send all unknown routes to <code>index.html</code> so Angular’s router can take over.</td>
+  </tr>
+  <tr>
+    <td>Received <code>Joi.validate is not a function</code> due to deprecated <code>express-validation</code> and mismatched Joi versions.</td>
+    <td>Removed <code>express-validation</code>, rewrote validation using <code>schema.validate()</code>, and installed <code>joi@17</code> locally to match production.</td>
+  </tr>
+  <tr>
+    <td>Using <code>"type": "module"</code> caused missing extension errors and issues with CommonJS dependencies.</td>
+    <td>Removed <code>esbuild</code>, added <code>.js</code> to imports, and used <code>import.meta.url</code> to replicate <code>__dirname</code>.</td>
+  </tr>
+  <tr>
+    <td>lient made requests to <code>localhost</code>; server failed without <code>GITHUB_TOKEN</code>.</td>
+    <td>Defined <code>apiUrl</code> in <code>environment.prod.ts</code>, built with <code>--configuration production</code>, and configured <code>.env</code> with <code>dotenv</code>.</td>
+  </tr>
+</table>
 
-- _Issue:_ Client and server were deployed together, causing build and routing conflicts.
-- _Resolution:_ Split into two Render services — one `web` for the Node server and one `static` for the Angular client, using `render.yaml`.
-
-2. **Angular Route Refresh Failures**
-
-- _Issue:_ Direct navigation to client routes like `/inspect` resulted in 404 errors.
-- _Resolution:_ Added a rewrite rule in Render to send all unknown routes to `index.html` so Angular's router can take over.
-
-3. **Joi Version and Validation Conflicts**
-
-- _Issue:_ Received `Joi.validate is not a function` due to use of deprecated `express-validation` and uninstalled/mismatched Joi versions locally.
-- _Resolution:_ Removed `express-validation`, rewrote validation using `schema.validate()`, and installed `joi@17` locally to match production.
-
-4. **ES Module Compatibility**
-
-- _Issue:_ Using `"type": "module"` triggered missing extension errors and bundling issues with CommonJS-based dependencies.
-- _Resolution:_ Removed `esbuild`, added `.js` to all local imports, and used `import.meta.url` to replicate `__dirname`.
-
-5. **Environment Variable and Build Configs**
-
-- _Issue:_ Client made requests to `localhost`, and server failed without `GITHUB_TOKEN` in some environments.
-- _Resolution:_ Defined `apiUrl` in Angular’s `environment.prod.ts`, used `--configuration production` in build commands, and configured `.env` handling with `dotenv`.
 
 ---
 
