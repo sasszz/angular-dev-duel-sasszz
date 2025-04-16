@@ -1,7 +1,11 @@
 # DevDuel
+
 Duke it out with your fellow devs!
 
 DevDuel lets you enter two GitHub usernames and watch them face off in a stat-based animated battle.
+
+  <img src="/client/src/assets/brawlerGirl/idle.gif" width="200" />
+    <img src="/client/src/assets/enemyPunk/idle.gif" width="200" />
 
 ---
 
@@ -26,8 +30,16 @@ DevDuel lets you enter two GitHub usernames and watch them face off in a stat-ba
 
 ## Motivation
 
-I made DevDuel because I wanted to build something fun that mixes coding with animation, while getting more practice with Angular. It gave me a chance to learn how to work with routes, services, and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
-
+<table>
+  <tr>
+    <td width="220">
+      <img src="/client/src/assets/brawlerGirl/jab.gif" width="200" />
+    </td>
+    <td>
+      I made <strong>DevDuel</strong> because I wanted to build something fun that mixes coding with animation, while getting more practice with Angular. It gave me a chance to learn how to work with routes, services, and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -40,9 +52,7 @@ I made DevDuel because I wanted to build something fun that mixes coding with an
   <img src="/client/src/assets/screens/ERROR.png" width="300" style="vertical-align: top;"/>
 </p>
 
-
 ---
-
 
 ## Mono Repo Structure
 
@@ -64,7 +74,6 @@ dev-duel/
 - Mobile-optimized, animated, and deployed via [Render](https://render.com)
 - GitHub API token used to avoid rate limits
 
-
 ---
 
 ## Backend
@@ -74,15 +83,25 @@ Built in **Javascript** using **Node** and **Express**.
 To determine user stats and titles, the backend analyzes GitHub profiles with custom logic:
 
 ### Titles:
+
 ```ts
-const isForker = repos => repos.filter(repo => repo.fork).length > repos.length / 2 ? 'Forker' : '';
-const isOneTrickPony = repos => onlyUnique(repos.map(repo => repo.language)).length === 1 ? 'One-Trick Pony' : '';
-const isJackOfAllTrades = repos => onlyUnique(repos.map(repo => repo.language)).length >= 10 ? 'Jack of all Trades' : '';
-const isStalker = user => user.following > user.followers ? 'Stalker' : '';
-const isMrPopular = user => user.followers > user.following ? 'Mr. Popular' : '';
+const isForker = (repos) =>
+  repos.filter((repo) => repo.fork).length > repos.length / 2 ? "Forker" : "";
+const isOneTrickPony = (repos) =>
+  onlyUnique(repos.map((repo) => repo.language)).length === 1
+    ? "One-Trick Pony"
+    : "";
+const isJackOfAllTrades = (repos) =>
+  onlyUnique(repos.map((repo) => repo.language)).length >= 10
+    ? "Jack of all Trades"
+    : "";
+const isStalker = (user) => (user.following > user.followers ? "Stalker" : "");
+const isMrPopular = (user) =>
+  user.followers > user.following ? "Mr. Popular" : "";
 ```
 
 ### Stats:
+
 ```ts
 const totalStars = repos => repos.reduce((total, repo) => total + repo.stargazers_count, 0);
 const highestStarred = repos => repos.reduce((highest, repo) => Math.max(highest, repo.stargazers_count), 0);
@@ -99,11 +118,13 @@ All data is merged via a `userMapper()` function that returns a structured user 
 Built in **Angular** with **TailwindCSS**.
 
 ### Routes:
+
 - `/` — Home page
 - `/inspect` — Enter a username to inspect a GitHub user
 - `/duel` — Enter two usernames and watch them battle
 
 ### Duel Page Features:
+
 - Countdown overlay: "3... 2... 1... FIGHT!"
 - Animated Gif Pixel Art characters (thanks to [Ansimuz](https://ansimuz.itch.io/))
 - Gifs updated with `setTimeout`, moved via CSS absolute positioning
@@ -128,16 +149,37 @@ Used to authenticate GitHub API requests and avoid rate limits.
 
 ## Deployment
 
-Deployed on **Render** with a `render.yaml` file to handle both client and server.
+<table>
+  <tr>
+    <td width="220">
+      <img src="/client/src/assets/brawlerGirl/kick.gif" width="200" />
+    </td>
+    <td>
+      Deployed on <strong>Render</strong> with a <code>render.yaml</code> file to handle both client and server.
+    </td>
+  </tr>
+</table>
+
 
 ---
 
 ## Acknowledgements
 
-- Sprite art by [Ansimuz](https://ansimuz.itch.io/)
-- GitHub [REST API](https://docs.github.com/en/rest?apiVersion=2022-11-28)
-- [Render](https://render.com) for deployment
-- Initial Repo built by CookSys
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
+        <li>GitHub <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">REST API</a></li>
+        <li><a href="https://render.com">Render</a> for deployment</li>
+        <li>Initial repo built by CookSys</li>
+      </ul>
+    </td>
+    <td width="220">
+      <img src="/client/src/assets/enemyPunk/punch.gif" width="200" />
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -146,24 +188,29 @@ Deployed on **Render** with a `render.yaml` file to handle both client and serve
 During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complec frontend logic such as timing the animations and importing assets. The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
 
 1. **Monorepo Configuration**
-  - *Issue:* Client and server were deployed together, causing build and routing conflicts.
-  - *Resolution:* Split into two Render services — one `web` for the Node server and one `static` for the Angular client, using `render.yaml`.
+
+- _Issue:_ Client and server were deployed together, causing build and routing conflicts.
+- _Resolution:_ Split into two Render services — one `web` for the Node server and one `static` for the Angular client, using `render.yaml`.
 
 2. **Angular Route Refresh Failures**
-  - *Issue:* Direct navigation to client routes like `/inspect` resulted in 404 errors.
-  - *Resolution:* Added a rewrite rule in Render to send all unknown routes to `index.html` so Angular's router can take over.
+
+- _Issue:_ Direct navigation to client routes like `/inspect` resulted in 404 errors.
+- _Resolution:_ Added a rewrite rule in Render to send all unknown routes to `index.html` so Angular's router can take over.
 
 3. **Joi Version and Validation Conflicts**
-  - *Issue:* Received `Joi.validate is not a function` due to use of deprecated `express-validation` and uninstalled/mismatched Joi versions locally.
-  - *Resolution:* Removed `express-validation`, rewrote validation using `schema.validate()`, and installed `joi@17` locally to match production.
+
+- _Issue:_ Received `Joi.validate is not a function` due to use of deprecated `express-validation` and uninstalled/mismatched Joi versions locally.
+- _Resolution:_ Removed `express-validation`, rewrote validation using `schema.validate()`, and installed `joi@17` locally to match production.
 
 4. **ES Module Compatibility**
-  - *Issue:* Using `"type": "module"` triggered missing extension errors and bundling issues with CommonJS-based dependencies.
-  - *Resolution:* Removed `esbuild`, added `.js` to all local imports, and used `import.meta.url` to replicate `__dirname`.
+
+- _Issue:_ Using `"type": "module"` triggered missing extension errors and bundling issues with CommonJS-based dependencies.
+- _Resolution:_ Removed `esbuild`, added `.js` to all local imports, and used `import.meta.url` to replicate `__dirname`.
 
 5. **Environment Variable and Build Configs**
-  - *Issue:* Client made requests to `localhost`, and server failed without `GITHUB_TOKEN` in some environments.
-  - *Resolution:* Defined `apiUrl` in Angular’s `environment.prod.ts`, used `--configuration production` in build commands, and configured `.env` handling with `dotenv`.
+
+- _Issue:_ Client made requests to `localhost`, and server failed without `GITHUB_TOKEN` in some environments.
+- _Resolution:_ Defined `apiUrl` in Angular’s `environment.prod.ts`, used `--configuration production` in build commands, and configured `.env` handling with `dotenv`.
 
 ---
 
