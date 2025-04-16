@@ -12,6 +12,7 @@ export class DuelComponent implements OnInit {
   data: any[] = [];
   userOneData: any = null;
   userTwoData: any = null;
+  errorMessage: string | null = null;
 
   duelTriggered = false;
   loading = false;
@@ -32,6 +33,8 @@ export class DuelComponent implements OnInit {
     this.duelComplete = false;
     this.duelTriggered = true;
     this.loading = true;
+    this.errorMessage = null;
+
     console.log(
       'onSubmit clicked with usernames:',
       this.usernameOne,
@@ -48,10 +51,16 @@ export class DuelComponent implements OnInit {
           this.userTwoData = data[1];
           console.log('userOneData:', this.userOneData);
           console.log('userTwoData:', this.userTwoData);
+        } else {
+          this.errorMessage = 'One or both usernames are invalid.';
         }
       })
 
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        console.error(err);
+        this.errorMessage = 'One or both usernames are invalid.';
+      })
+
       .finally(() => {
         this.loading = false;
       });
