@@ -19,9 +19,7 @@ export class InspectComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('onSubmit clicked with username:', this.username);
     this.userService.inspectUser(this.username).then((data) => {
-      console.log('API response:', data);
       this.userData = data; // <- Save it
     }).catch(err => console.error(err));
   }

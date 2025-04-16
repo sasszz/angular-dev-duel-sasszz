@@ -35,22 +35,13 @@ export class DuelComponent implements OnInit {
     this.loading = true;
     this.errorMessage = null;
 
-    console.log(
-      'onSubmit clicked with usernames:',
-      this.usernameOne,
-      this.usernameTwo
-    );
-
     this.userService
       .duelUsers(this.usernameOne, this.usernameTwo)
       .then((data) => {
-        console.log('API response:', data);
 
         if (Array.isArray(data)) {
           this.userOneData = data[0];
           this.userTwoData = data[1];
-          console.log('userOneData:', this.userOneData);
-          console.log('userTwoData:', this.userTwoData);
         } else {
           this.errorMessage = 'One or both usernames are invalid.';
         }

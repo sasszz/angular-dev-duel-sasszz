@@ -4,9 +4,6 @@ const isForker = repos =>
   repos.filter(repo => repo.fork).length > repos.length / 2 ? 'Forker' : ''
 
 const isOneTrickPony = repos => {
-  console.log(
-    onlyUnique(repos.map(repo => repo.language)).filter(language => language)
-  )
   return onlyUnique(
     repos.map(repo => repo.language).filter(language => language)
   ).length === 1
