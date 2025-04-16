@@ -71,6 +71,9 @@ dev-duel/
 
 <table width="100%">
   <tr>
+    <td width="240" align="right">
+      <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
+    </td>
     <td>
       <ul>
         <li>Look up a single GitHub user</li>
@@ -81,12 +84,8 @@ dev-duel/
         <li>GitHub API token used to avoid rate limits</li>
       </ul>
     </td>
-    <td width="240" align="right">
-      <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
-    </td>
   </tr>
 </table>
-
 
 ---
 
@@ -197,7 +196,9 @@ Used to authenticate GitHub API requests and avoid rate limits.
 
 ## Reflection
 
-During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complec frontend logic such as timing the animations and importing assets. The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
+During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complex frontend logic such as timing the animations and importing assets. 
+
+The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
 
 1. **Monorepo Configuration**
 
