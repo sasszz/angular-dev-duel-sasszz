@@ -8,5 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// Warm up the backend API by hitting /api/user/octocat
+fetch('https://dev-duel-api-p9sy.onrender.com/api/user/octocat').finally(() => {
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err));
+});
