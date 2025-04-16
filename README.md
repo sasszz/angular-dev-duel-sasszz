@@ -1,5 +1,7 @@
 # DevDuel
-Duke it out with your fellow devs
+Duke it out with your fellow devs!
+
+DevDuel lets you enter two GitHub usernames and watch them face off in a stat-based animated battle.
 
 ---
 
@@ -10,13 +12,32 @@ Duke it out with your fellow devs
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
+---
+
+## Tech Stack
+
+**Frontend**: Angular, TailwindCSS  
+**Backend**: Node.js, Express  
+**API**: GitHub REST API
+**Deployment**: Render  
+**Animation**: Pure HTML/CSS + setTimeout + GIFs
+
+---
+
+## Motivation
+
+I made DevDuel because I wanted to build something fun that mixes coding with animation, while getting more practice with Angular. It gave me a chance to learn how to work with routes, services, and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
+
+
+---
+
 <p align="center">
   <img src="/client/src/assets/screens/COUNTDOWN.png" width="300" style="vertical-align: top;"/>
   <img src="/client/src/assets/screens/FIGHT.png" width="300" style="vertical-align: top;"/>
   <img src="/client/src/assets/screens/KO.png" width="300" style="vertical-align: top;"/>
+  <img src="/client/src/assets/screens/STATS.png" width="300" style="vertical-align: top;"/>
   <img src="/client/src/assets/screens/LOADING.png" width="300" style="vertical-align: top;"/>
   <img src="/client/src/assets/screens/ERROR.png" width="300" style="vertical-align: top;"/>
-  <img src="/client/src/assets/screens/STATS.png" width="300" style="vertical-align: top;"/>
 </p>
 
 
@@ -36,16 +57,19 @@ dev-duel/
 
 ## Features
 
-- Inspect Page - look up a single GitHub user and display profile details
-- Duel Page - two GitHub users duel in an animated head-to-head battle
-- Custom character animation with user avatars and dramatic effects
+- Look up a single GitHub user
+- Duel Two GitHub users using custom backend logic
+- Complex frontend animations
+- Custom character animation with user avatars
 - Mobile-optimized, animated, and deployed via [Render](https://render.com)
 - GitHub API token used to avoid rate limits
 
 
 ---
 
-## GitHub Profile Analyzer (Backend)
+## Backend
+
+Built in **Javascript** using **Node** and **Express**.
 
 To determine user stats and titles, the backend analyzes GitHub profiles with custom logic:
 
@@ -80,11 +104,10 @@ Built in **Angular** with **TailwindCSS**.
 - `/duel` — Enter two usernames and watch them battle
 
 ### Duel Page Features:
-- Countdown: "3... 2... 1... FIGHT!"
+- Countdown overlay: "3... 2... 1... FIGHT!"
 - Animated Gif Pixel Art characters (thanks to [Ansimuz](https://ansimuz.itch.io/))
 - Gifs updated with `setTimeout`, moved via CSS absolute positioning
 - Avatar bubbles reflect the GitHub users
-- KO and WINNER effects
 - User stats shown below after the fight
 - Full mobile responsiveness
 - Loading + error state UI
@@ -114,16 +137,33 @@ Deployed on **Render** with a `render.yaml` file to handle both client and serve
 - Sprite art by [Ansimuz](https://ansimuz.itch.io/)
 - GitHub [REST API](https://docs.github.com/en/rest?apiVersion=2022-11-28)
 - [Render](https://render.com) for deployment
+- Initial Repo built by CookSys
 
 ---
 
-## Tech Stack
+## Reflection
 
-**Frontend**: Angular, TailwindCSS  
-**Backend**: Node.js, Express  
-**API**: GitHub REST API
-**Deployment**: Render  
-**Animation**: Pure HTML/CSS + setTimeout + GIFs
+During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complec frontend logic such as timing the animations and importing assets. The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
+
+1. **Monorepo Configuration**
+  - *Issue:* Client and server were deployed together, causing build and routing conflicts.
+  - *Resolution:* Split into two Render services — one `web` for the Node server and one `static` for the Angular client, using `render.yaml`.
+
+2. **Angular Route Refresh Failures**
+  - *Issue:* Direct navigation to client routes like `/inspect` resulted in 404 errors.
+  - *Resolution:* Added a rewrite rule in Render to send all unknown routes to `index.html` so Angular's router can take over.
+
+3. **Joi Version and Validation Conflicts**
+  - *Issue:* Received `Joi.validate is not a function` due to use of deprecated `express-validation` and uninstalled/mismatched Joi versions locally.
+  - *Resolution:* Removed `express-validation`, rewrote validation using `schema.validate()`, and installed `joi@17` locally to match production.
+
+4. **ES Module Compatibility**
+  - *Issue:* Using `"type": "module"` triggered missing extension errors and bundling issues with CommonJS-based dependencies.
+  - *Resolution:* Removed `esbuild`, added `.js` to all local imports, and used `import.meta.url` to replicate `__dirname`.
+
+5. **Environment Variable and Build Configs**
+  - *Issue:* Client made requests to `localhost`, and server failed without `GITHUB_TOKEN` in some environments.
+  - *Resolution:* Defined `apiUrl` in Angular’s `environment.prod.ts`, used `--configuration production` in build commands, and configured `.env` handling with `dotenv`.
 
 ---
 
