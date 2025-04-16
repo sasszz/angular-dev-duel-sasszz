@@ -36,18 +36,20 @@ DevDuel lets you enter two GitHub usernames and watch them face off in a stat-ba
 
 ## Motivation
 
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 20px;">
-    <img src="/client/src/assets/brawlerGirl/jab.gif" width="220" />
-  </div>
-  <div>
-    <p>
-      I made <strong>DevDuel</strong> because I wanted to build something fun that mixes coding with animation,
-      while getting more practice with Angular. It gave me a chance to learn how to work with routes, services,
-      and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
-    </p>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="140">
+      <img src="/client/src/assets/brawlerGirl/jab.gif" width="220" />
+    </td>
+    <td>
+      <p>
+        I made <strong>DevDuel</strong> because I wanted to build something fun that mixes coding with animation,
+        while getting more practice with Angular. It gave me a chance to learn how to work with routes, services,
+        and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
+      </p>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -75,21 +77,23 @@ dev-duel/
 
 ## Features
 
-<div style="display: flex; align-items: flex-start;">
-  <div style="margin-right: 20px;">
-    <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
-  </div>
-  <div>
-    <ul>
-      <li>Look up a single GitHub user</li>
-      <li>Duel two GitHub users using custom backend logic</li>
-      <li>Complex frontend animations</li>
-      <li>Custom character animation with user avatars</li>
-      <li>Mobile-optimized, animated, and deployed via <a href="https://render.com">Render</a></li>
-      <li>GitHub API token used to avoid rate limits</li>
-    </ul>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="140">
+      <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
+    </td>
+    <td>
+      <ul>
+        <li>Look up a single GitHub user</li>
+        <li>Duel two GitHub users using custom backend logic</li>
+        <li>Complex frontend animations</li>
+        <li>Custom character animation with user avatars</li>
+        <li>Mobile-optimized, animated, and deployed via <a href="https://render.com">Render</a></li>
+        <li>GitHub API token used to avoid rate limits</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -166,34 +170,39 @@ Used to authenticate GitHub API requests and avoid rate limits.
 
 ## Deployment
 
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 20px;">
-    <img src="/client/src/assets/brawlerGirl/kick.gif" width="220" />
-  </div>
-  <div>
-    <p>
-      Deployed on <strong>Render</strong> with a <code>render.yaml</code> file to handle both client and server.
-    </p>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="140">
+      <img src="/client/src/assets/brawlerGirl/kick.gif" width="220" />
+    </td>
+    <td>
+      <p>
+        Deployed on <strong>Render</strong> with a <code>render.yaml</code> file to handle both client and server.
+      </p>
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## Acknowledgements
 
-<div style="display: flex; align-items: flex-start;">
-  <div>
-    <ul>
-      <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
-      <li>GitHub <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">REST API</a></li>
-      <li><a href="https://render.com">Render</a> for deployment</li>
-      <li>Initial repo built by CookSys</li>
-    </ul>
-  </div>
-  <div style="margin-right: 20px;">
-    <img src="/client/src/assets/enemyPunk/punch.gif" width="220" />
-  </div>
-</div>
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
+        <li>GitHub <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">REST API</a></li>
+        <li><a href="https://render.com">Render</a> for deployment</li>
+        <li>Initial repo built by CookSys</li>
+      </ul>
+    </td>
+    <td width="140">
+      <img src="/client/src/assets/enemyPunk/punch.gif" width="220" />
+    </td>
+  </tr>
+</table>
+
 
 ---
 
