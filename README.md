@@ -2,11 +2,15 @@
 
 Duke it out with your fellow devs!
 
+<img src="/client/src/assets/devduel.png" />
+
+---
+
 DevDuel lets you enter two GitHub usernames and watch them face off in a stat-based animated battle.
 
-<p>
-  <img src="/client/src/assets/brawlerGirl/idle.gif" width="200" />
-  <img src="/client/src/assets/enemyPunk/idle.gif" width="200" />
+<p align="center">
+  <img src="/client/src/assets/brawlerGirl/idle.gif" width="200" style="display:inline-block; margin-right: 10px;" />
+  <img src="/client/src/assets/enemyPunk/idle.gif" width="200" style="display:inline-block;" />
 </p>
 
 ---
@@ -32,16 +36,18 @@ DevDuel lets you enter two GitHub usernames and watch them face off in a stat-ba
 
 ## Motivation
 
-<table>
-  <tr>
-    <td width="220">
-      <img src="/client/src/assets/brawlerGirl/jab.gif" width="200" />
-    </td>
-    <td>
-      I made <strong>DevDuel</strong> because I wanted to build something fun that mixes coding with animation, while getting more practice with Angular. It gave me a chance to learn how to work with routes, services, and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
-    </td>
-  </tr>
-</table>
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 20px;">
+    <img src="/client/src/assets/brawlerGirl/jab.gif" width="220" />
+  </div>
+  <div>
+    <p>
+      I made <strong>DevDuel</strong> because I wanted to build something fun that mixes coding with animation,
+      while getting more practice with Angular. It gave me a chance to learn how to work with routes, services,
+      and APIs, and to see how I could bring real GitHub data to life with custom animations and UI.
+    </p>
+  </div>
+</div>
 
 ---
 
@@ -69,23 +75,21 @@ dev-duel/
 
 ## Features
 
-<table width="100%">
-  <tr>
-    <td width="240" align="right">
-      <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
-    </td>
-    <td>
-      <ul>
-        <li>Look up a single GitHub user</li>
-        <li>Duel two GitHub users using custom backend logic</li>
-        <li>Complex frontend animations</li>
-        <li>Custom character animation with user avatars</li>
-        <li>Mobile-optimized, animated, and deployed via <a href="https://render.com">Render</a></li>
-        <li>GitHub API token used to avoid rate limits</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; align-items: flex-start;">
+  <div style="margin-right: 20px;">
+    <img src="/client/src/assets/brawlerGirl/walk.gif" width="220" />
+  </div>
+  <div>
+    <ul>
+      <li>Look up a single GitHub user</li>
+      <li>Duel two GitHub users using custom backend logic</li>
+      <li>Complex frontend animations</li>
+      <li>Custom character animation with user avatars</li>
+      <li>Mobile-optimized, animated, and deployed via <a href="https://render.com">Render</a></li>
+      <li>GitHub API token used to avoid rate limits</li>
+    </ul>
+  </div>
+</div>
 
 ---
 
@@ -162,41 +166,40 @@ Used to authenticate GitHub API requests and avoid rate limits.
 
 ## Deployment
 
-<table width="100%">
-  <tr>
-    <td width="220">
-      <img src="/client/src/assets/brawlerGirl/kick.gif" width="200" />
-    </td>
-    <td>
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 20px;">
+    <img src="/client/src/assets/brawlerGirl/kick.gif" width="220" />
+  </div>
+  <div>
+    <p>
       Deployed on <strong>Render</strong> with a <code>render.yaml</code> file to handle both client and server.
-    </td>
-  </tr>
-</table>
+    </p>
+  </div>
+</div>
 
 ---
 
 ## Acknowledgements
 
-<table width="100%">  <tr>
-    <td>
-      <ul>
-        <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
-        <li>GitHub <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">REST API</a></li>
-        <li><a href="https://render.com">Render</a> for deployment</li>
-        <li>Initial repo built by CookSys</li>
-      </ul>
-    </td>
-    <td width="220">
-      <img src="/client/src/assets/enemyPunk/punch.gif" width="200" />
-    </td>
-  </tr>
-</table>
+<div style="display: flex; align-items: flex-start;">
+  <div>
+    <ul>
+      <li>Sprite art by <a href="https://ansimuz.itch.io/">Ansimuz</a></li>
+      <li>GitHub <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">REST API</a></li>
+      <li><a href="https://render.com">Render</a> for deployment</li>
+      <li>Initial repo built by CookSys</li>
+    </ul>
+  </div>
+  <div style="margin-right: 20px;">
+    <img src="/client/src/assets/enemyPunk/punch.gif" width="220" />
+  </div>
+</div>
 
 ---
 
 ## Reflection
 
-During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complex frontend logic such as timing the animations and importing assets. 
+During this project, I was learning Angular for the first time, and getting used to its project strucure compared to React. I had to learn how to pass state and handle complex frontend logic such as timing the animations and importing assets.
 
 The most difficult part of the project was setting up the server and deploying the application. I ran into several issues with deployment and it took quite a long time to debug and get this deployed to Render. The issues I encountered and their resolutions are listed below.
 
